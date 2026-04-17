@@ -1,0 +1,228 @@
+/* ============================================================
+   RoboSustain — Global Styles & Design Tokens
+   Theme: Eco-Tech  |  Midnight Blue · Cyber Lime · Slate Gray
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg-deep:       #050d1a;
+  --bg-dark:       #0a192f;
+  --bg-card:       #0d2040;
+  --bg-card-2:     #102448;
+  --bg-highlight:  #163060;
+
+  --lime:          #32ff7e;
+  --lime-dim:      #1acd5f;
+  --lime-ghost:    rgba(50, 255, 126, 0.08);
+  --lime-border:   rgba(50, 255, 126, 0.22);
+
+  --slate:         #475569;
+  --slate-light:   #64748b;
+  --slate-dim:     #334155;
+
+  --text-primary:  #e2f0ff;
+  --text-secondary:#8facc8;
+  --text-muted:    #4a6583;
+
+  --border:        rgba(50, 100, 160, 0.25);
+  --border-lime:   rgba(50, 255, 126, 0.18);
+
+  --radius-sm:     6px;
+  --radius-md:     10px;
+  --radius-lg:     16px;
+  --radius-xl:     24px;
+
+  --font-display:  'Syne', sans-serif;
+  --font-body:     'Inter', sans-serif;
+  --font-mono:     'JetBrains Mono', monospace;
+
+  --shadow-card:   0 4px 32px rgba(0,0,0,0.45);
+  --shadow-lime:   0 0 24px rgba(50, 255, 126, 0.14);
+  --glow-lime:     0 0 40px rgba(50, 255, 126, 0.22);
+}
+
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--slate-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--slate); }
+
+/* ── Selection ───────────────────────────────────────────── */
+::selection { background: rgba(50, 255, 126, 0.28); color: var(--text-primary); }
+
+/* ── Utility classes ─────────────────────────────────────── */
+.lime      { color: var(--lime); }
+.muted     { color: var(--text-muted); }
+.secondary { color: var(--text-secondary); }
+.mono      { font-family: var(--font-mono); }
+.display   { font-family: var(--font-display); }
+
+/* ── Pulse animation ─────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.96); }
+}
+
+@keyframes ping {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── Shared Components ───────────────────────────────────── */
+.rs-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.rs-card-lime {
+  background: var(--bg-card);
+  border: 1px solid var(--border-lime);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card), var(--shadow-lime);
+}
+
+.rs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.rs-btn-primary {
+  background: var(--lime);
+  color: #050d1a;
+}
+.rs-btn-primary:hover {
+  background: #4dffaa;
+  transform: translateY(-2px);
+  box-shadow: var(--glow-lime);
+}
+.rs-btn-primary:active { transform: translateY(0); }
+
+.rs-btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.rs-btn-ghost:hover {
+  border-color: var(--slate);
+  color: var(--text-primary);
+  background: var(--bg-highlight);
+}
+
+/* ── Badge ───────────────────────────────────────────────── */
+.rs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rs-badge-lime {
+  background: rgba(50,255,126,0.12);
+  color: var(--lime);
+  border: 1px solid var(--lime-border);
+}
+.rs-badge-blue {
+  background: rgba(59,130,246,0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59,130,246,0.22);
+}
+
+/* ── Chart tooltips ──────────────────────────────────────── */
+.recharts-tooltip-wrapper { outline: none; }
+
+/* ── Survey progress dots ────────────────────────────────── */
+.dot-track {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 240px;
+}
+.dot {
+  height: 4px;
+  border-radius: 2px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Likert buttons ──────────────────────────────────────── */
+.likert-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+@media (max-width: 500px) {
+  .likert-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+@media (max-width: 460px) {
+  .choice-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Background grid texture ─────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(50,100,160,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(50,100,160,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
